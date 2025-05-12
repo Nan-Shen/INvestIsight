@@ -1,0 +1,10 @@
+plan_task:
+    description: > 
+        1.  Develop a detailed content outline of an investigation report on {query} for a financial consulting team, including an introduction, key points, conclusion, and a call to action.
+        2. Extract relevant data and key insights from multiple sources.
+        3. Prioritize the latest trends in the past two years, and noteworthy news on {query} using the search tool.
+        4. Identify financial and business status about {query}, such as the distribution of revenue sources, risk factors, current business environment and shifts in strategy.
+        5. Analyze the current trends in the industry that involved in {query}. 
+    expected_output: > 
+        A comprehensive content plan document with an outline, key insights and source references.
+    agent: "plan_agent"

@@ -1,0 +1,10 @@
+plan_task:
+    description: > 
+        1. Prioritize the latest trends, and noteworthy news on {query} using the search tool.
+        2. Identify the main revenue sources, risk factors, current business environment and shifts in strategy.
+        3. Analyze the current trends in the industry that involved in {query}. 
+        4. Develop a detailed content outline including an introduction, key points, conclusion, and a call to action.
+        5. Extract relevant data and key insights from multiple sources.
+    expected_output: > 
+        A comprehensive content plan document with an outline, key insights and source references.
+    agent: "plan_agent"

@@ -1,0 +1,213 @@
+research_topic:
+  description: >
+    Research the topic {topic} and gather latest information about it with the search tool. 
+    Summarize the main points for the topic writer to write a section of 2-3 paragraphs in a report about {query}.
+    These are all the other sections of the full report: {sections}
+  expected_output: >
+    A list of insights and key points about the topic {topic}.
+  agent: "topic_researcher"
+
+write_topic:
+  description: >
+    Write a section about {topic} based on the insights
+    and key points gathered by the topic researcher agent.
+    Ensure the section adheres to the main topic {query}.
+    These are all the other sections of the full report: {sections}
+  expected_output: >
+    A well-written and well-structured section with the most important and accurate insights on {topic}. The section should have 2 or 3 paragraphs.
+  agent: "topic_writer"
+
+validate_task:
+    description: >
+        Proofread the given report for fact checking and grammatical errors. 
+        Verify the accuracy of information and cross-check facts with reliable sources using the search tool and correct errors.
+        Verify that the content relevant to the topic of this section: {topic}.
+    expected_output: >
+        A well-written investigation report, ready for publication, each section should have 2 or 3 paragraphs.
+    agent: "validate_agent"
+
+
+    
+
+
+
+plan_task:
+    description: > 
+        1. Prioritize the latest trends, and noteworthy news on {query}.
+        2. Identify the main revenue sources, risk factors, current business environment and shifts in strategy.
+        3. Analyze the current trends in the industry that involved in {query}. 
+        4. Develop a detailed content outline including an introduction, key points, conclusion, and a call to action.
+        5. Extract relevant data and key insights from multiple sources.
+    expected_output: > 
+        A comprehensive content plan document with an outline, key insights and source references.
+    agent: "plan_agent"
+
+research_topic:
+  description: >
+    Research the topic {topic} and gather latest information about it. 
+    Ensure that the main points adhere to the main topic {query}.
+    These are all the other sections: {sections}
+  expected_output: >
+    A list of insights and key points about the topic {topic}.
+  agent: "topic_researcher"
+
+write_topic:
+  description: >
+    Write a section about {topic} based on the insights
+    and key points gathered by the topic researcher agent.
+    Ensure the section adheres to the main topic {query}.
+    These are all the other sections: {sections}
+  expected_output: >
+    A well-written and well-structured section with the most important and accurate insights on {topic}. The section should have 2 or 3 paragraphs.
+  agent: "topic_writer"
+
+validate_task:
+    description: >
+        Proofread the given report for fact checking and grammatical errors. 
+        Verify the accuracy of information and cross-check facts with reliable sources using the search tool and correct errors.
+        Verify that the content relevant to the topic of this section: {topic}.
+    expected_output: >
+        A well-written investigation report, ready for publication, each section should have 2 or 3 paragraphs.
+    agent: "validate_agent"
+
+write_task:
+    description: > 
+        1. Use the content plan to craft a convicing investigation report on {topic}.
+        2. Ensure sections are properly named and structured.
+        3. Ensure the report is structured with an engaging introduction, insightful body, and a summarizing conclusion.
+    expected_output: > 
+        A well-written and well-structured investigation report with the most important and accurate insights on {topic}. Each section should have 2 or 3 paragraphs.
+    agent: >
+        writer
+
+research_task:
+    description: "Use the SerperDevTool to find the most relevant and recent data on {topic}."
+    assigned_agent: "research_agent"
+    expected_output: "A detailed research report with key insights and source references."
+
+report_task:
+    description: "Summarize the research findings into a well-structured, concise report."
+    assigned_agent: "report_agent"
+    expected_output: "A summary highlighting the key takeaways from the research."
+    depends_on: "research_task"
+
+fact_checking_task:
+    description: "Cross-check the summarized information for accuracy and remove any misleading claims."
+    assigned_agent: "validate_agent"
+    expected_output: "A fact-checked and verified research summary."
+    depends_on: "summarization_task"
+
+analyze_draft:
+  description: |
+    Analyze the markdown file at {draft_path} to create a developer-focused
+    technical overview
+
+    1. Map out the core idea that the blog discusses
+
+    2. Identify key sections and what each section is about
+
+    3. For each section, extract all URLs that appear inside image markdown syntax ![](image_url)
+
+    4. You must associate these identified image urls to their 
+       correspoinding sections, so that we can use them with the tweets as media pieces
+
+    Focus on details that are important for a comprehensive understanding of
+    the blog.
+  expected_output: |
+    A technical analysis containing:
+    - Blog title and core concept/idea
+    - Key technical sections identified with their main points
+    - Important code examples or technical concepts covered
+    - Key takeaways for developers
+    - Relevant urls to media that are associated with the key sections and 
+      can be associated with a tweet, this must be done
+
+create_linkedin_post_plan:
+  description: |
+    Develop a comprehensive LinkedIn post based on the draft analysis provided
+    and closely follow the writing style prvided in the {path_to_example_linkedin}
+
+    The post should present technical content in a professional, long-form format
+    while maintaining engagement and readability.
+
+    Plan should include:
+    - An attention-grabbing opening statement, it should be same as the title of the blog
+    - Well-structured body that breaks down the technical content
+    - Professional tone suitable for LinkedIn's business audience
+    - One main blog URL placed strategically at the end of the post
+    - Strategic use of line breaks and formatting
+    - Relevant hashtags (3-5 maximum)
+
+    Make sure to cover:
+    - close follow the writing style provided in the {path_to_example_linkedin}
+    - The core technical problem and its business impact
+    - Key solutions and technical approaches
+    - Real-world applications and benefits
+    - Professional insights or lessons learned
+    - Clear call to action
+
+    Focus on creating content that resonates with both technical professionals
+    and business leaders while maintaining technical accuracy.
+  expected_output: |
+    A LinkedIn post plan containing:
+      - content
+      - a main blog url that is associated with the post
+
+research_task:
+  description: >
+    Research the topic {topic} and gather latest
+    information about it. Prepare insights and key
+    points that will be used to create a outline for
+    a book  by the outline writer Agent.
+  expected_output: >
+    A list of insights and key points about the topic {topic}.
+  agent: research_agent
+
+write_outline:
+  description: >
+    Write a outline for a book about {topic}.
+    Ensure the outline is engaging and adheres to
+    what a good outline should be.
+  expected_output: >
+    A beautifully crafted outline for a book
+    about {topic} in the following format:
+    - total chapters
+    - list of titles
+  agent: outline_writer
+
+
+risk_analysis_task:
+    description: >
+        Analyze the risk of the project title '{project_title}'.
+    expected_output: >
+        A categorized risk assessment report.
+    agent: >
+        risk_analysis_agent
+
+
+market_demand_task:
+    description: > 
+        Analyze the demand for '{topic}'. Conduct a deep analysis of industry in 2025. "
+            "Identify key innovations, breakthroughs, and market shifts. "
+            "Before finalizing, ask a human reviewer "
+            "for feedback to refine the report."
+    expected_output: >
+        A structured summary of market demand trends.
+    agent: > 
+        market_demand_agent 
+
+return_on_investment_task:
+    description: > 
+        Analyze the ROI of the project title '{project_title}'.
+    expected_output: > 
+        A structured ROI estimate for the project.
+    agent: >
+        return_on_investment_agent,  
+
+final_report_task:
+    description: > 
+        Review the final responses from the market demand, risk analysis, and ROI agents and create a final report.
+    expected_output: >
+        A comprehensive report on the project '{project_title}' containing the market demand, risk analysis, and return on investment.
+    agent: > 
+        manager_agent
