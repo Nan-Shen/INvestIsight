@@ -75,7 +75,8 @@ class InvestCrew:
         return Agent(
             config=self.agents_config["topic_writer"],
             llm=self.llm,
-            multimodal=True
+            multimodal=True,
+            max_iter=3,
         )
         
     @task
@@ -94,7 +95,8 @@ class InvestCrew:
             llm=self.llm,
             allow_delegation=False,
             tools=[self.search_tool, self.srcape_tool],
-            multimodal=True
+            multimodal=True,
+            max_iter=3,
         )
         
     @task
