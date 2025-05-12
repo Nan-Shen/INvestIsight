@@ -16,3 +16,5 @@ The INvestInsight Crew is composed of multiple AI agents, each with unique roles
     ✅ Evaluator Agent – Verifies and ensures the accuracy and coherence of the outputs.
 
     👤 Human-in-the-Loop – Users can interact during the planning and evaluation phases to maintain relevance and domain alignment.
+    
+![invest_agents drawio](https://github.com/user-attachments/assets/86965d46-30a3-4fb0-9139-b164ef470dfa)
