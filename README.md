@@ -17,3 +17,6 @@ The INvestInsight Crew is composed of multiple AI agents, each with unique roles
 
     👤 Human-in-the-Loop – Users can interact during the planning and evaluation phases to maintain relevance and domain alignment.
     
+## Human input example
+<img width="1061" alt="Screen Shot 2025-05-12 at 3 13 01 AM" src="https://github.com/user-attachments/assets/0072baff-fa51-4ebc-8258-5873cf81e05e" />
+<img width="1055" alt="Screen Shot 2025-05-12 at 3 13 16 AM" src="https://github.com/user-attachments/assets/2aca9802-4965-4cb7-a183-b83a270f8e7a" />
